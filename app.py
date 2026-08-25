@@ -10,7 +10,9 @@ import threading
 
 # Load your OpenAI API key from the environment.
 # Make sure you set OPENAI_API_KEY in your environment variables.
+# Load your OpenAI API key from the environment.
 openai.api_key = os.getenv("OPENAI_API_KEY")
+
 if not openai.api_key:
     raise ValueError("Please set the OPENAI_API_KEY environment variable.")
 
@@ -101,6 +103,8 @@ def index():
                 # Build a knowledge graph of the schema and generate a summary
                 schema_graph = build_schema_graph(engine)
                 schema_text = graph_summary(schema_graph)
+                import matplotlib
+                matplotlib.use("Agg")
                 import matplotlib.pyplot as plt
 
                 plt.figure(figsize=(12, 8))
